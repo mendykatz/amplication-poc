@@ -1,20 +1,29 @@
 import Switch from "@mui/material/Switch";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ToggleButton from "@mui/material/ToggleButton";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import RolesContext from "../store/roles-context";
 
 import classes from "./config-header.module.scss";
 
 function ConfigHeader(props) {
-  const [alignment, setAlignment] = useState("all");
-  const [numOfRoles, setNumOfRoles] = useState(0);
+  const [alignment, setAlignment] = useState(null);
+
+  const rolesCtx = useContext(RolesContext);
 
   const handleChangeToggleButton = (event, newAlignment) => {
-    setAlignment(newAlignment);
-  };
+    switch (newAlignment) {
+      case "all":
+        rolesCtx.setAllRoles(props.name);
+        break;
+      case "public":
+        rolesCtx.setAllRoles(props.name);
+        break;
 
-  const handleNumOfRoles = (num) => {
-    setNumOfRoles(num);
+      default:
+        break;
+    }
+    setAlignment(newAlignment);
   };
 
   return (
@@ -32,7 +41,8 @@ function ConfigHeader(props) {
         <p>
           {props.name} <span>{props.type}</span>
         </p>
-        <span>{numOfRoles} roles selected</span>
+        {rolesCtx.totalRoles(props.name) === 3 ? <span>All roles selected</span> : 
+        <span>{rolesCtx.totalRoles(props.name)} roles selected</span>}
       </div>
       <ToggleButtonGroup
         size="small"
@@ -42,9 +52,13 @@ function ConfigHeader(props) {
         exclusive
         onChange={handleChangeToggleButton}
       >
-        <ToggleButton value="all">All Roles</ToggleButton>
+        <ToggleButton 
+        selected={rolesCtx.totalRoles(props.name) === 3 && alignment === 'all'} 
+        value="all">All Roles</ToggleButton>
         <ToggleButton value="granular">Granular</ToggleButton>
-        <ToggleButton value="public">Public</ToggleButton>
+        <ToggleButton
+        selected={rolesCtx.totalRoles(props.name) === 3 && alignment === 'public'}  
+        value="public">Public</ToggleButton>
       </ToggleButtonGroup>
     </div>
   );

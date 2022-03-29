@@ -1,29 +1,19 @@
 import ToggleButton from "@mui/material/ToggleButton";
-import { useState } from "react";
+import { useContext } from "react";
+import RolesContext from "../store/roles-context";
 
 import classes from "./roles-buttons.module.scss";
 
-function RolesButtons() {
-  const [rolesButtonselectedManager, setRolesButtonselectedManager] =
-    useState(false);
-  const [rolesButtonselectedAdmin, setRolesButtonselectedAdmin] =
-    useState(false);
-  const [rolesButtonselectedUser, setRolesButtonselectedUser] = useState(false);
+function RolesButtons(props) {
+  const rolesCtx = useContext(RolesContext);
 
-  const handleRolesButtonselected = (event) => {
-    switch (event) {
-      case "manager":
-        setRolesButtonselectedManager(!rolesButtonselectedManager);
-        break;
-      case "admin":
-        setRolesButtonselectedAdmin(!rolesButtonselectedAdmin);
-        break;
-      case "user":
-        setRolesButtonselectedUser(!rolesButtonselectedUser);
-        break;
+  const handleRolesButtonSelected = (event) => {
+    const isRoleSelected = rolesCtx.isRoleSelected(props.name, event);
 
-      default:
-        break;
+    if (isRoleSelected) {
+      rolesCtx.removeRole(props.name, event);
+    } else {
+      rolesCtx.addRole(props.name, event);
     }
   };
 
@@ -32,9 +22,9 @@ function RolesButtons() {
       <ToggleButton
         value="check"
         className={classes.rolesButton}
-        selected={rolesButtonselectedManager}
+        selected={rolesCtx.isRoleSelected(props.name, "manager")}
         onChange={() => {
-          handleRolesButtonselected("manager");
+          handleRolesButtonSelected("manager");
         }}
       >
         Manager
@@ -42,9 +32,9 @@ function RolesButtons() {
       <ToggleButton
         value="check"
         className={classes.rolesButton}
-        selected={rolesButtonselectedAdmin}
+        selected={rolesCtx.isRoleSelected(props.name, "admin")}
         onChange={() => {
-          handleRolesButtonselected("admin");
+          handleRolesButtonSelected("admin");
         }}
       >
         Admin
@@ -52,9 +42,9 @@ function RolesButtons() {
       <ToggleButton
         value="check"
         className={classes.rolesButton}
-        selected={rolesButtonselectedUser}
+        selected={rolesCtx.isRoleSelected(props.name, "user")}
         onChange={() => {
-          handleRolesButtonselected("user");
+          handleRolesButtonSelected("user");
         }}
       >
         User
