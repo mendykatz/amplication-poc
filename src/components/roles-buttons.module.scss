@@ -1,0 +1,12 @@
+.rolesButtons {
+    background-color: #15192C;
+    display: flex;
+    gap: 8px;
+    padding: 16px;
+
+    .rolesButton {
+        padding: 4px 10px;
+        border-radius: 30px;
+        border: 1px solid;
+    }
+}

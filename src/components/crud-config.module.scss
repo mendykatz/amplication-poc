@@ -1,10 +1,10 @@
 .rootContainer {
-   display: flex;
-   flex-direction: column;
-   color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    color: lightgrey;
 }
 
-.headerContainer{
+.headerContainer {
     display: flex;
     padding: 8px 8px;
     background-color: #2C3249;
@@ -16,7 +16,8 @@
     display: flex;
     flex-direction: column;
 
-    p, span {
+    p,
+    span {
         margin: 0;
     }
 
@@ -26,6 +27,7 @@
 
     p {
         font-size: 14px;
+
         span {
             font-size: 14px;
             color: gray;
@@ -38,6 +40,3 @@
     margin-left: auto;
 }
 
-.rolesButtons {
-    background-color: #15192C;
-}
