@@ -1,29 +1,30 @@
 import ToggleButton from "@mui/material/ToggleButton";
-import * as React from "react";
+import { useState } from "react";
 
 import classes from "./roles-buttons.module.scss";
 
 function RolesButtons() {
-  const [rolesButtonselectedManager, setRolesButtonselectedManager] = React.useState(false);
-  const [rolesButtonselectedAdmin, setRolesButtonselectedAdmin] = React.useState(false);
-  const [rolesButtonselectedUser, setRolesButtonselectedUser] = React.useState(false);
+  const [rolesButtonselectedManager, setRolesButtonselectedManager] =
+    useState(false);
+  const [rolesButtonselectedAdmin, setRolesButtonselectedAdmin] =
+    useState(false);
+  const [rolesButtonselectedUser, setRolesButtonselectedUser] = useState(false);
 
   const handleRolesButtonselected = (event) => {
-      switch (event) {
-          case 'manager':
-            setRolesButtonselectedManager(!rolesButtonselectedManager);
-              break;
-          case 'admin':
-            setRolesButtonselectedAdmin(!rolesButtonselectedAdmin);
-              break;
-          case 'user':
-            setRolesButtonselectedUser(!rolesButtonselectedUser);
-              break;
-      
-          default:
-              break;
-      }
-    
+    switch (event) {
+      case "manager":
+        setRolesButtonselectedManager(!rolesButtonselectedManager);
+        break;
+      case "admin":
+        setRolesButtonselectedAdmin(!rolesButtonselectedAdmin);
+        break;
+      case "user":
+        setRolesButtonselectedUser(!rolesButtonselectedUser);
+        break;
+
+      default:
+        break;
+    }
   };
 
   return (
@@ -33,7 +34,7 @@ function RolesButtons() {
         className={classes.rolesButton}
         selected={rolesButtonselectedManager}
         onChange={() => {
-          handleRolesButtonselected('manager');
+          handleRolesButtonselected("manager");
         }}
       >
         Manager
@@ -43,7 +44,7 @@ function RolesButtons() {
         className={classes.rolesButton}
         selected={rolesButtonselectedAdmin}
         onChange={() => {
-          handleRolesButtonselected('admin');
+          handleRolesButtonselected("admin");
         }}
       >
         Admin
@@ -53,7 +54,7 @@ function RolesButtons() {
         className={classes.rolesButton}
         selected={rolesButtonselectedUser}
         onChange={() => {
-          handleRolesButtonselected('user');
+          handleRolesButtonselected("user");
         }}
       >
         User

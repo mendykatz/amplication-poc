@@ -1,19 +1,27 @@
 import Switch from "@mui/material/Switch";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ToggleButton from "@mui/material/ToggleButton";
-import * as React from "react";
+import { useState } from "react";
 
 import classes from "./config-header.module.scss";
 
 function ConfigHeader(props) {
-  const [alignment, setAlignment] = React.useState("all");
+  const [alignment, setAlignment] = useState("all");
+  const [numOfRoles, setNumOfRoles] = useState(0);
+
   const handleChangeToggleButton = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
 
+  const handleNumOfRoles = (num) => {
+    setNumOfRoles(num);
+  };
+
   return (
     <div
-      className={`${classes.headerContainer}  ${!props.switchChecked ? "mb-16" : ""}`}
+      className={`${classes.headerContainer}  ${
+        !props.switchChecked ? "mb-16" : ""
+      }`}
     >
       <Switch
         className={classes.switch}
@@ -24,7 +32,7 @@ function ConfigHeader(props) {
         <p>
           {props.name} <span>{props.type}</span>
         </p>
-        <span>roles selected</span>
+        <span>{numOfRoles} roles selected</span>
       </div>
       <ToggleButtonGroup
         size="small"
