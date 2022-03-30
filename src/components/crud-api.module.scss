@@ -1,5 +1,19 @@
 .rootContainer {
     display: flex;
     flex-direction: column;
-    width: 70vw;
- }
+    width: 60vw;
+    background: #22273C;
+    height: 75vh;
+    padding: 20px 30px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 6px 2px grey;
+    min-width: 400px;
+    // min-height: 630px;
+}
+
+.title {
+    position: absolute;
+    top: 9px;
+    left: 50px;
+    color: darkgray;
+}

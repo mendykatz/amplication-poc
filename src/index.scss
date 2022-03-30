@@ -1,4 +1,4 @@
-body{
+body {
     padding: 0;
     margin: 0;
     font-family: 'Roboto';
@@ -8,20 +8,22 @@ body{
 
 .main-container {
     display: flex;
-    width: calc(100vw - 32px);
-    height: calc(100vh - 32px);
-    padding: 16px;
-    background-color: #22273C;
+    width: calc(100vw - 100px);
+    height: calc(100vh - 100px);
+    padding: 50px;
+    background-color: #F5F6FA;
 }
 
 button {
     color: gray !important;
+    text-transform: capitalize !important;
 
     &.Mui-selected {
         color: #7950ED !important;
         background-color: rgb(255 255 255 / 8%) !important;
     }
 }
+
 .mb-16 {
     margin-bottom: 16px;
 }
