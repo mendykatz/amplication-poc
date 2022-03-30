@@ -20,7 +20,7 @@ function CrudConfig(props) {
         handleChangeSwitch={handleChangeSwitch}
       />
 
-      {switchChecked && <RolesButtons  name={props.name}/>}
+      {switchChecked && <RolesButtons name={props.name} />}
     </div>
   );
 }

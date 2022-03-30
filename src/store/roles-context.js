@@ -51,11 +51,11 @@ export function RolesContextProvider(props) {
 
   const setAllRolesHandler = (name) => {
     setRoles((prevRoles) => {
-        prevRoles[name.toLowerCase()] = ["manager", "admin", "user"];
-        let obj = {
-            ...prevRoles,
-          };
-      return (obj);
+      prevRoles[name.toLowerCase()] = ["manager", "admin", "user"];
+      let obj = {
+        ...prevRoles,
+      };
+      return obj;
     });
   };
 

@@ -1,9 +1,11 @@
-import CrudApi from './components/crud-api'
+import CrudApi from "./components/crud-api";
 
 function App() {
-  return <div className='main-container'>
-      <CrudApi path='Customers'/>
-    </div>;
+  return (
+    <div className="main-container">
+      <CrudApi path="Customers" />
+    </div>
+  );
 }
 
 export default App;
